@@ -1,0 +1,19 @@
+{
+  "tagName": "select",
+  "attributes": {
+    "id": "countrySelect",
+    "data-name": "countrySelect",
+    "class": "form-select mb-3"
+  },
+  "children": [
+    {
+      "tagName": "option",
+      "attributes": {
+        "value": "",
+        "selected": "selected",
+        "disabled": "disabled"
+      },
+      "textContent": "Select a country"
+    }
+  ]
+}

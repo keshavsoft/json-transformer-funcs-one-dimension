@@ -1,0 +1,14 @@
+[
+  {
+    "columnName": "IN",
+    "label": "India"
+  },
+  {
+    "columnName": "US",
+    "label": "United States"
+  },
+  {
+    "columnName": "UK",
+    "label": "United Kingdom"
+  }
+]

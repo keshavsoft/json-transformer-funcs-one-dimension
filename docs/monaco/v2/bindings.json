@@ -1,0 +1,62 @@
+[
+  {
+    "event": "click",
+    "selector": "#baseBtn",
+    "action": "openSystemFilePicker",
+    "narration": "Open native OS system file dialog to choose any JSON file"
+  },
+  {
+    "event": "click",
+    "selector": "#tabBase",
+    "action": "showTabBase",
+    "narration": "Switch editor model to base.json"
+  },
+  {
+    "event": "change",
+    "selector": "#fileInput",
+    "action": "handleFileSelection",
+    "narration": "Read selected local file from system and display content in Monaco Editor"
+  },
+  {
+    "event": "click",
+    "selector": "#rakaBtn",
+    "action": "loadRaka",
+    "narration": "Load and populate Raka columns JSON into editor"
+  },
+  {
+    "event": "click",
+    "selector": "#templateBtn",
+    "action": "loadTemplate",
+    "narration": "Load and populate template JSON into editor"
+  },
+  {
+    "event": "click",
+    "selector": "#buildBtn",
+    "action": "build",
+    "narration": "Transform columns with template and display output in editor"
+  },
+  {
+    "event": "click",
+    "selector": "#tabColumns",
+    "action": "showTabColumns",
+    "narration": "Switch editor model to columns.json"
+  },
+  {
+    "event": "click",
+    "selector": "#tabTemplate",
+    "action": "showTabTemplate",
+    "narration": "Switch editor model to template.json"
+  },
+  {
+    "event": "click",
+    "selector": "#tabOutput",
+    "action": "showTabOutput",
+    "narration": "Switch editor model to output.json"
+  },
+  {
+    "event": "click",
+    "selector": "#renderBtn",
+    "action": "render",
+    "narration": "Compile and mount 1D collection or container DOM into selected target element, then harvest all stage IDs"
+  }
+]
