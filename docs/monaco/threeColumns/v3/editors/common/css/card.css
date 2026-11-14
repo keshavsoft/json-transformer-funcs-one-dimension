@@ -67,6 +67,26 @@
   border-color: #38bdf8;
 }
 
+.btn-transform {
+  background: #15803d;
+  color: #f0fdf4;
+  border: 1px solid #22c55e;
+  border-radius: 6px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease-in-out;
+}
+
+.btn-transform:hover {
+  background: #16a34a;
+}
+
+.btn-transform:active {
+  background: #14532d;
+}
+
 .editor {
   flex: 1;
   min-height: 0;

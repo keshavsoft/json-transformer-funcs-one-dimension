@@ -1,7 +1,7 @@
 [
   {
-    "event": "change",
-    "selector": "#filePickerRight",
-    "action": "loadFile"
+    "event": "click",
+    "selector": "#transformButton",
+    "action": "transform"
   }
 ]

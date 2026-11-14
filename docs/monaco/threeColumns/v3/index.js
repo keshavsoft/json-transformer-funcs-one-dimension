@@ -9,11 +9,11 @@ async function boot() {
 
     const leftEditor = initLeftEditor(monaco, 'paneLeft');
     const middleEditor = initMiddleEditor(monaco, 'paneMiddle');
-    const rightEditor = initRightEditor(monaco, 'paneRight');
+    const rightEditor = initRightEditor(monaco, 'paneRight', { leftEditor, middleEditor });
 
-    console.info('[Monaco Three Columns V1] All three editors initialized cleanly.');
+    console.info('[Monaco Three Columns V3] Editors initialized with Transform action hook.');
   } catch (error) {
-    console.error('[Monaco Three Columns V1 Error]', error);
+    console.error('[Monaco Three Columns V3 Error]', error);
   }
 }
 
