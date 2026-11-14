@@ -32,8 +32,19 @@ export const actions = {
 
   transform: () => {
     // Write your transformation code here
-    window.ks.transformer.funcs.oneDimension.transform();
-    console.info('[Transform Action] Hooked successfully. Write your transformation logic here.');
+    // window.ks.transformer.funcs.oneDimension.transform();
+    // console.log("context : ", context);
+    const columns = context.leftEditor.getValue();
+    const template = context.middleEditor.getValue();
+    const columnsAsJson = JSON.parse(columns);
+    const templateAsJson = JSON.parse(template);
+
+    console.log("columnsAsJson : ", columnsAsJson);
+    const generatedSpec = window.ks.transformer.funcs.oneDimension.template(columnsAsJson, templateAsJson);
+    editorInstance.setValue(JSON.stringify(generatedSpec, null, 2));
+
+    // console.log("generatedSpec : ", generatedSpec);
+    // console.info('[Transform Action] Hooked successfully. Write your transformation logic here.');
   }
 };
 
