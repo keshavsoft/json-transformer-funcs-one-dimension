@@ -1,0 +1,7 @@
+[
+  {
+    "event": "click",
+    "selector": "#transformButton",
+    "action": "transform"
+  }
+]
