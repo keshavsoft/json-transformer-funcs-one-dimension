@@ -34,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/keshavsoft/json-transformer-funcs-one-dimension/issues"
   },
-  "homepage": "https://github.com/keshavsoft/json-transformer-funcs-one-dimension#readme"
+  "homepage": "https://github.com/keshavsoft/json-transformer-funcs-one-dimension#readme",
+  "devDependencies": {
+    "spec-repo": "^1.6.1"
+  }
 }
