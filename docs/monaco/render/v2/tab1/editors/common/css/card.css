@@ -87,6 +87,29 @@
   background: #14532d;
 }
 
+.btn-render {
+  background: #0284c7;
+  color: #f0f9ff;
+  border: 1px solid #38bdf8;
+  border-radius: 6px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-render:hover {
+  background: #0369a1;
+}
+
+.btn-render:active {
+  background: #075985;
+}
+
 .editor {
   flex: 1;
   min-height: 0;

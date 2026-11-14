@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        if (!location.pathname.endsWith('/') && !location.pathname.split('/').pop().includes('.')) {
+            location.replace(location.pathname + '/' + location.search + location.hash);
+        } else {
+            location.replace('./v2/tab1/');
+        }
+    </script>
+    <title>Monaco IDE Render</title>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -3,5 +3,10 @@
     "event": "click",
     "selector": "#transformButton",
     "action": "transform"
+  },
+  {
+    "event": "click",
+    "selector": "#renderButton",
+    "action": "renderInTab2"
   }
 ]
