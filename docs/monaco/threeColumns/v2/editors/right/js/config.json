@@ -1,0 +1,22 @@
+{
+  "containerId": "monacoRight",
+  "theme": "vs-dark",
+  "language": "json",
+  "automaticLayout": true,
+  "readOnly": false,
+  "minimap": {
+    "enabled": false
+  },
+  "fontSize": 14,
+  "lineNumbers": "on",
+  "tabSize": 2,
+  "scrollBeyondLastLine": false,
+  "formatOnPaste": true,
+  "formatOnType": true,
+  "modelUri": "inmemory://keshavsoft/split/v2/right.json",
+  "initialValue": {
+    "title": "Monaco Split V2 — Target",
+    "role": "Target Output",
+    "message": "Transformed two-dimensional output will render here."
+  }
+}

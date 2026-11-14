@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Monaco Split Editor Blueprint — V3</title>
+  <title>Monaco Three Columns Blueprint — V1</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/editor/editor.main.min.css">
@@ -13,7 +13,7 @@
 <body id="app">
   <header class="topbar">
     <div class="brand">
-      <span class="brand-mark">‹›</span> Monaco IDE <span class="crumb">/ Split Editor Blueprint / V3</span>
+      <span class="brand-mark">‹›</span> Monaco IDE <span class="crumb">/ Three Columns Blueprint / V1</span>
     </div>
   </header>
 
@@ -35,6 +35,27 @@
       <div id="monacoLeft" class="editor"></div>
       <footer>
         <span id="footerInfoLeft">File: columns.json</span>
+        <span>JSON</span>
+      </footer>
+    </section>
+
+    <!-- Middle Editor Feature Component -->
+    <section id="paneMiddle" class="pane">
+      <div class="pane-heading">
+        <div>
+          <span class="eyebrow">TRANSFORMATION / SPEC</span>
+          <h1 id="editorTitleMiddle">Spec Editor</h1>
+        </div>
+        <div class="pane-actions">
+          <label class="file-label">
+            <span>Load JSON:</span>
+            <input type="file" id="filePickerMiddle" accept=".json">
+          </label>
+        </div>
+      </div>
+      <div id="monacoMiddle" class="editor"></div>
+      <footer>
+        <span id="footerInfoMiddle">File: default.json</span>
         <span>JSON</span>
       </footer>
     </section>

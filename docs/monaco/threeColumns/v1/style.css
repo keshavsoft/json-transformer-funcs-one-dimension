@@ -3,4 +3,5 @@
 @import "./workspace/css/workspace.css";
 @import "./editors/common/css/card.css";
 @import "./editors/left/css/left.css";
+@import "./editors/middle/css/middle.css";
 @import "./editors/right/css/right.css";
