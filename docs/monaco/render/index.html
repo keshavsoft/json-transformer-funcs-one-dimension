@@ -2,18 +2,233 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <script>
-        if (!location.pathname.endsWith('/') && !location.pathname.split('/').pop().includes('.')) {
-            location.replace(location.pathname + '/' + location.search + location.hash);
-        } else {
-            location.replace('./v2/tab1/');
-        }
-    </script>
-    <title>Monaco IDE Render</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Render Studios Hub — json-transformer-funcs-one-dimension</title>
+  <script>
+    if (!location.pathname.endsWith('/') && !location.pathname.endsWith('.html')) {
+      location.replace(location.pathname + '/' + location.search + location.hash);
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-primary: #1d4ed8;
+      --brand-accent: #0284c7;
+      --brand-dark: #0f172a;
+      --bg-page: #f8fafc;
+      --card-border: #e2e8f0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: #334155;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+      color: #ffffff;
+      padding: 56px 0 48px 0;
+      margin-bottom: 32px;
+    }
+
+    .folder-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      transition: all 0.22s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+    }
+
+    .folder-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
+      border-color: #38bdf8;
+    }
+
+    .folder-card.active-card {
+      border: 2px solid #0284c7;
+      background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+    }
+
+    .version-badge-lg {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+  </style>
 </head>
 
 <body>
+
+  <!-- Hero Header -->
+  <header class="hero-banner shadow-sm">
+    <div class="container" style="max-width: 1040px;">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+        <div>
+          <!-- Breadcrumb Pill -->
+          <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb mb-0 px-3 py-1 rounded-pill bg-white bg-opacity-10 text-white border border-white border-opacity-20 small">
+              <li class="breadcrumb-item"><a href="../../index.html" class="text-white text-decoration-none">Docs</a></li>
+              <li class="breadcrumb-item"><a href="../index.html" class="text-white text-decoration-none">Monaco</a></li>
+              <li class="breadcrumb-item active text-white fw-bold" aria-current="page">render</li>
+            </ol>
+          </nav>
+          <h1 class="display-6 fw-bold mb-2">Render Studios Hub</h1>
+          <p class="lead mb-0 text-white text-opacity-75" style="max-width: 680px;">
+            Workspaces dedicated to compiling one-dimensional JSON collections and rendering them live into real browser DOM elements.
+          </p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="./v2/tab1/" class="btn btn-info fw-bold px-3 py-2 shadow-sm text-dark">
+            <i class="bi bi-window-stack me-1"></i> Launch Render v2 (Two-Tab)
+          </a>
+          <a href="../index.html" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-arrow-left me-1"></i> Monaco Hub
+          </a>
+          <a href="../../index.html" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-house me-1"></i> Docs
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container pb-5" style="max-width: 1040px;">
+
+    <!-- Story Card -->
+    <section class="card shadow-sm border-0 p-4 mb-4">
+      <div class="d-flex align-items-start gap-3">
+        <div class="p-3 rounded-circle bg-info bg-opacity-10 text-info">
+          <i class="bi bi-display fs-3"></i>
+        </div>
+        <div>
+          <h2 class="h5 fw-bold text-dark mb-2">The Story: From Code to Live Elements</h2>
+          <p class="text-secondary mb-2">
+            Generating JSON AST nodes in Monaco is only the first step. The true power of declarative components comes alive when compiled JSON elements (such as <code>&lt;th&gt;</code>, <code>&lt;col&gt;</code>, or <code>&lt;select&gt;</code>) render into interactive DOM elements.
+          </p>
+          <p class="text-secondary mb-3">
+            The <strong>Render Series</strong> charts the evolutionary journey from an integrated single-page runner into a decoupled <strong>Two-Tab Live Architecture</strong>:
+          </p>
+          <div class="row g-2 text-center small fw-semibold">
+            <div class="col-md-6">
+              <div class="p-2 bg-light rounded border text-secondary">
+                <i class="bi bi-file-code me-1"></i> v1: Single-Page 3-Column Studio
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-2 bg-light rounded border text-info text-dark">
+                <i class="bi bi-window-stack me-1"></i> v2: Two-Tab Live Render (Tab 1 IDE ➔ Tab 2 Canvas)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subfolders Grid -->
+    <section class="mb-5">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h2 class="h5 fw-bold text-dark mb-0">
+          <i class="bi bi-folder2-open text-primary me-2"></i> Subfolders &amp; Studio Generations
+        </h2>
+        <span class="text-muted small">2 generations available</span>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- v2 Studio (Flagship Two-Tab) -->
+        <div class="col-md-6">
+          <div class="folder-card active-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="badge bg-info text-dark">Flagship &bull; Two-Tab</span>
+              <span class="text-info fw-bold small">v2 Architecture</span>
+            </div>
+            <div class="d-flex align-items-baseline gap-2 mb-2">
+              <div class="version-badge-lg text-info">v2</div>
+              <div class="fw-semibold text-dark">Decoupled Live Stage</div>
+            </div>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Separates the IDE from the presentation canvas. <strong>Tab 1</strong> houses the 3-column Monaco studio with Transform &amp; Render triggers. <strong>Tab 2</strong> runs an isolated, pure HTML canvas driven by <code>BroadcastChannel</code> and the JSON-to-DOM engine.
+            </p>
+            <div class="d-flex gap-2">
+              <a href="./v2/tab1/" class="btn btn-info fw-bold flex-grow-1 py-2 shadow-sm text-dark">
+                Launch Tab 1 (Studio) <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+              <a href="./v2/" class="btn btn-outline-info text-dark py-2 px-3">
+                Overview
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- v1 Studio (Integrated) -->
+        <div class="col-md-6">
+          <div class="folder-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="badge bg-secondary">Generation 1</span>
+              <span class="text-muted small">v1 Studio</span>
+            </div>
+            <div class="d-flex align-items-baseline gap-2 mb-2">
+              <div class="version-badge-lg text-dark">v1</div>
+              <div class="fw-semibold text-secondary">Integrated 3-Column Studio</div>
+            </div>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Single-page Monaco studio with Source, Template, and Output panes. Features a hooked <strong>[Transform]</strong> action button that compiles the 1D collection into Column 3.
+            </p>
+            <a href="./v1/" class="btn btn-outline-secondary fw-bold w-100 py-2">
+              Launch v1 Studio <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation Hub Card -->
+    <div class="card border-0 bg-white shadow-sm p-4 rounded-3 text-center">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 text-start">
+        <div>
+          <h3 class="h6 fw-bold mb-1">Explore Other Workspaces</h3>
+          <p class="small text-muted mb-0">Check out the 3-Column template exploration studio or the classic dual-pane editor.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="../threeColumns/v3/" class="btn btn-sm btn-success fw-bold">3-Column Studio v3</a>
+          <a href="../split/v1/" class="btn btn-sm btn-outline-secondary">Split Studio</a>
+          <a href="../v1/" class="btn btn-sm btn-outline-primary">Dual-Pane v1</a>
+          <a href="../index.html" class="btn btn-sm btn-outline-dark">Monaco Hub</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-top py-4 bg-white text-muted">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2" style="max-width: 1040px; font-size: 0.875rem;">
+      <div>
+        <strong>JSON Transformer Suite</strong> • Built by <a href="https://github.com/keshavsoft" target="_blank" class="text-decoration-none text-dark fw-semibold">KeshavSoft</a>
+      </div>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="./v2/tab1/" class="text-decoration-none text-info fw-bold">v2 Tab 1</a>
+        <a href="./v2/tab2/" class="text-decoration-none text-info">v2 Tab 2</a>
+        <a href="./v1/" class="text-decoration-none text-secondary">v1 Studio</a>
+        <a href="../index.html" class="text-decoration-none text-muted">Monaco Hub</a>
+        <a href="../../index.html" class="text-decoration-none text-muted">Docs Portal</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
 
 </html>

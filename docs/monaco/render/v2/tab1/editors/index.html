@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab 1 Editors Architecture — Render v2</title>
+  <script>
+    if (!location.pathname.endsWith('/') && !location.pathname.endsWith('.html')) {
+      location.replace(location.pathname + '/' + location.search + location.hash);
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-primary: #1d4ed8;
+      --brand-accent: #0284c7;
+      --brand-dark: #0f172a;
+      --bg-page: #f8fafc;
+      --card-border: #e2e8f0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: #334155;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #090d16 0%, #1e3a8a 50%, #0284c7 100%);
+      color: #ffffff;
+      padding: 48px 0 40px 0;
+      margin-bottom: 32px;
+    }
+
+    .comp-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      transition: all 0.2s ease-in-out;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .comp-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      border-color: #38bdf8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero-banner shadow-sm">
+    <div class="container" style="max-width: 1040px;">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+        <div>
+          <!-- Breadcrumb Pill -->
+          <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb mb-0 px-3 py-1 rounded-pill bg-white bg-opacity-10 text-white border border-white border-opacity-20 small">
+              <li class="breadcrumb-item"><a href="../../../../../index.html" class="text-white text-decoration-none">Docs</a></li>
+              <li class="breadcrumb-item"><a href="../../../../index.html" class="text-white text-decoration-none">Monaco</a></li>
+              <li class="breadcrumb-item"><a href="../../../index.html" class="text-white text-decoration-none">render</a></li>
+              <li class="breadcrumb-item"><a href="../../index.html" class="text-white text-decoration-none">v2</a></li>
+              <li class="breadcrumb-item"><a href="../index.html" class="text-white text-decoration-none">tab1</a></li>
+              <li class="breadcrumb-item active text-white fw-bold" aria-current="page">editors</li>
+            </ol>
+          </nav>
+          <h1 class="display-6 fw-bold mb-2">Tab 1: Editors Component Architecture</h1>
+          <p class="lead mb-0 text-white text-opacity-75" style="max-width: 680px;">
+            The modular editor suite powering Tab 1 (The Supplier Studio) in the Two-Tab live rendering architecture.
+          </p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="../index.html" class="btn btn-info fw-bold px-3 py-2 shadow-sm text-dark">
+            <i class="bi bi-play-circle-fill me-1"></i> Launch Tab 1 Studio
+          </a>
+          <a href="../../index.html" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-arrow-left me-1"></i> Render v2 Hub
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container pb-5" style="max-width: 1040px;">
+
+    <!-- Story Card -->
+    <section class="card shadow-sm border-0 p-4 mb-4">
+      <div class="d-flex align-items-start gap-3">
+        <div class="p-3 rounded-circle bg-info bg-opacity-10 text-info">
+          <i class="bi bi-boxes fs-3"></i>
+        </div>
+        <div>
+          <h2 class="h5 fw-bold text-dark mb-2">The Story: Component Architecture of Tab 1</h2>
+          <p class="text-secondary mb-2">
+            Tab 1 acts as the **Foundry**: it loads input data, lets you select element molds, compiles the JSON AST, and beams it to Tab 2.
+          </p>
+          <p class="text-secondary mb-3">
+            Each column is isolated in a subfolder:
+          </p>
+          <ul class="text-secondary mb-0 small">
+            <li><strong>Left Editor (Source)</strong>: Manages <code>columns.json</code> and file input parsing.</li>
+            <li><strong>Middle Editor (Template)</strong>: Populates live dropdown options dynamically from <code>spec-repo</code>.</li>
+            <li><strong>Right Editor (Output &amp; Broadcast)</strong>: Compiles the transform and beams payload via <code>BroadcastChannel('keshavsoft-render-1d')</code>.</li>
+            <li><strong>Common</strong>: Houses shared Monaco AMD initialization and base styling.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subfolders Grid -->
+    <section class="mb-5">
+      <h2 class="h5 fw-bold text-dark mb-3">
+        <i class="bi bi-folder2-open text-primary me-2"></i> Editor Component Subfolders
+      </h2>
+
+      <div class="row g-4">
+
+        <!-- left/ -->
+        <div class="col-md-6 col-lg-3">
+          <div class="comp-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="badge bg-primary">Column 1</span>
+              <span class="text-muted small">Input</span>
+            </div>
+            <h3 class="h6 fw-bold text-dark mb-2"><i class="bi bi-folder text-warning me-1"></i> left/</h3>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Source columns component. Houses default <code>columns.json</code> and local file loading action.
+            </p>
+            <span class="badge bg-light text-dark border">actions.js &bull; config.json</span>
+          </div>
+        </div>
+
+        <!-- middle/ -->
+        <div class="col-md-6 col-lg-3">
+          <div class="comp-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="badge bg-warning text-dark">Column 2</span>
+              <span class="text-muted small">Template</span>
+            </div>
+            <h3 class="h6 fw-bold text-dark mb-2"><i class="bi bi-folder text-warning me-1"></i> middle/</h3>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Template selector component. Connects to <code>spec-repo</code> and switches Monaco template models on select change.
+            </p>
+            <span class="badge bg-light text-dark border">actions.js &bull; spec-repo</span>
+          </div>
+        </div>
+
+        <!-- right/ -->
+        <div class="col-md-6 col-lg-3">
+          <div class="comp-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="badge bg-success">Column 3</span>
+              <span class="text-muted small">Output &amp; Beam</span>
+            </div>
+            <h3 class="h6 fw-bold text-dark mb-2"><i class="bi bi-folder text-warning me-1"></i> right/</h3>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Houses both <strong>[Transform]</strong> and <strong>[Render in Tab 2]</strong> actions, syncing with Tab 2 across <code>BroadcastChannel</code>.
+            </p>
+            <span class="badge bg-light text-dark border">actions.js &bull; channel</span>
+          </div>
+        </div>
+
+        <!-- common/ -->
+        <div class="col-md-6 col-lg-3">
+          <div class="comp-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="badge bg-secondary">Shared</span>
+              <span class="text-muted small">Utilities</span>
+            </div>
+            <h3 class="h6 fw-bold text-dark mb-2"><i class="bi bi-folder text-warning me-1"></i> common/</h3>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Shared Monaco AMD loader module (<code>monacoLoader.js</code>) and pane styling.
+            </p>
+            <span class="badge bg-light text-dark border">monacoLoader.js &bull; css</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation Hub Card -->
+    <div class="card border-0 bg-white shadow-sm p-4 rounded-3 text-center">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 text-start">
+        <div>
+          <h3 class="h6 fw-bold mb-1">Launch Tab 1 Studio</h3>
+          <p class="small text-muted mb-0">Experience the 3-column supplier studio live.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="../index.html" class="btn btn-sm btn-info text-dark fw-bold">Open Tab 1 Studio</a>
+          <a href="../../index.html" class="btn btn-sm btn-outline-dark">Render v2 Hub</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-top py-4 bg-white text-muted">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2" style="max-width: 1040px; font-size: 0.875rem;">
+      <div>
+        <strong>JSON Transformer Suite</strong> • Built by <a href="https://github.com/keshavsoft" target="_blank" class="text-decoration-none text-dark fw-semibold">KeshavSoft</a>
+      </div>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="../index.html" class="text-decoration-none text-info fw-bold">Tab 1 Studio</a>
+        <a href="../../tab2/" target="_blank" class="text-decoration-none text-success">Tab 2 Canvas</a>
+        <a href="../../index.html" class="text-decoration-none text-muted">Render v2</a>
+        <a href="../../../../index.html" class="text-decoration-none text-muted">Monaco Hub</a>
+        <a href="../../../../../index.html" class="text-decoration-none text-muted">Docs Portal</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

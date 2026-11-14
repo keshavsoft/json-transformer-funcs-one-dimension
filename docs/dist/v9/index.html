@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDN Distribution v9 — json-transformer-funcs-one-dimension</title>
+  <script>
+    if (!location.pathname.endsWith('/') && !location.pathname.endsWith('.html')) {
+      location.replace(location.pathname + '/' + location.search + location.hash);
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-primary: #1d4ed8;
+      --brand-accent: #0284c7;
+      --brand-dark: #0f172a;
+      --bg-page: #f8fafc;
+      --card-border: #e2e8f0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: #334155;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+      color: #ffffff;
+      padding: 56px 0 48px 0;
+      margin-bottom: 32px;
+    }
+
+    pre {
+      background-color: #0f172a;
+      color: #f1f5f9;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 0;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero-banner shadow-sm">
+    <div class="container" style="max-width: 1040px;">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+        <div>
+          <!-- Breadcrumb Pill -->
+          <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb mb-0 px-3 py-1 rounded-pill bg-white bg-opacity-10 text-white border border-white border-opacity-20 small">
+              <li class="breadcrumb-item"><a href="../../index.html" class="text-white text-decoration-none">Docs</a></li>
+              <li class="breadcrumb-item"><a href="../index.html" class="text-white text-decoration-none">dist</a></li>
+              <li class="breadcrumb-item active text-white fw-bold" aria-current="page">v9</li>
+            </ol>
+          </nav>
+          <h1 class="display-6 fw-bold mb-2">v9 CDN Bundle</h1>
+          <p class="lead mb-0 text-white text-opacity-75" style="max-width: 680px;">
+            Version 9 standalone ES module distribution build for direct browser integration.
+          </p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="../index.html" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-arrow-left me-1"></i> dist Hub
+          </a>
+          <a href="../../index.html" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-house me-1"></i> Docs
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container pb-5" style="max-width: 1040px;">
+
+    <!-- Story Card -->
+    <section class="card shadow-sm border-0 p-4 mb-4">
+      <div class="d-flex align-items-start gap-3">
+        <div class="p-3 rounded-circle bg-success bg-opacity-10 text-success">
+          <i class="bi bi-check2-circle fs-3"></i>
+        </div>
+        <div>
+          <h2 class="h5 fw-bold text-dark mb-2">The Story: Production v9 Release</h2>
+          <p class="text-secondary mb-2">
+            The v9 bundle is the canonical production release of <code>json-transformer-funcs-one-dimension</code>. It incorporates runtime validation contracts, deep placeholder interpolation, and dual-mode dispatch (uniform <code>fromCollection</code> and individual <code>loopWithIndividualTemplate</code>).
+          </p>
+          <p class="text-secondary mb-3">
+            Importing <code>min.js</code> auto-registers the library onto <code>window.ks.transformer.funcs.oneDimension</code>:
+          </p>
+          <pre><code>import fromCollection from "./min.js";
+
+// Or access via global:
+const result = window.ks.transformer.funcs.oneDimension.fromCollection(sourceArray, templateObject);</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Files in this folder -->
+    <section class="card shadow-sm border-0 p-4 mb-4">
+      <h2 class="h5 fw-bold text-dark mb-3">
+        <i class="bi bi-file-earmark-code text-primary me-2"></i> Files in this Folder
+      </h2>
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>File Name</th>
+              <th>Format</th>
+              <th>Size</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./min.js" class="fw-bold text-decoration-none" target="_blank"><i class="bi bi-filetype-js text-primary me-1"></i> min.js</a></td>
+              <td><span class="badge bg-success">ES Module</span></td>
+              <td><code>~2.7 KB</code></td>
+              <td class="small text-secondary">Minified production release bundle with export &amp; global registration</td>
+              <td><a href="./min.js" target="_blank" class="btn btn-sm btn-primary">View / Download</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-top py-4 bg-white text-muted">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2" style="max-width: 1040px; font-size: 0.875rem;">
+      <div>
+        <strong>JSON Transformer Suite</strong> • Built by <a href="https://github.com/keshavsoft" target="_blank" class="text-decoration-none text-dark fw-semibold">KeshavSoft</a>
+      </div>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="./min.js" target="_blank" class="text-decoration-none text-primary">min.js</a>
+        <a href="../index.html" class="text-decoration-none text-muted">dist Hub</a>
+        <a href="../../index.html" class="text-decoration-none text-muted">Docs Portal</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Split (Dual-Pane) Studios Hub — json-transformer-funcs-one-dimension</title>
+  <script>
+    if (!location.pathname.endsWith('/') && !location.pathname.endsWith('.html')) {
+      location.replace(location.pathname + '/' + location.search + location.hash);
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-primary: #1d4ed8;
+      --brand-accent: #0284c7;
+      --brand-dark: #0f172a;
+      --bg-page: #f8fafc;
+      --card-border: #e2e8f0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: #334155;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+      color: #ffffff;
+      padding: 56px 0 48px 0;
+      margin-bottom: 32px;
+    }
+
+    .folder-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      transition: all 0.22s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+    }
+
+    .folder-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
+      border-color: #38bdf8;
+    }
+
+    .folder-card.active-card {
+      border: 2px solid #0284c7;
+      background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+    }
+
+    .version-badge-lg {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero-banner shadow-sm">
+    <div class="container" style="max-width: 1040px;">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+        <div>
+          <!-- Breadcrumb Pill -->
+          <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb mb-0 px-3 py-1 rounded-pill bg-white bg-opacity-10 text-white border border-white border-opacity-20 small">
+              <li class="breadcrumb-item"><a href="../../index.html" class="text-white text-decoration-none">Docs</a></li>
+              <li class="breadcrumb-item"><a href="../index.html" class="text-white text-decoration-none">Monaco</a></li>
+              <li class="breadcrumb-item active text-white fw-bold" aria-current="page">split</li>
+            </ol>
+          </nav>
+          <h1 class="display-6 fw-bold mb-2">Split (Dual-Pane) Studios</h1>
+          <p class="lead mb-0 text-white text-opacity-75" style="max-width: 680px;">
+            Dual-pane side-by-side Monaco editors for direct, focused comparison between raw input collections and compiled element AST output.
+          </p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="./v2/" class="btn btn-primary fw-bold px-3 py-2 shadow-sm">
+            <i class="bi bi-play-circle-fill me-1"></i> Launch Split v2
+          </a>
+          <a href="../index.html" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-arrow-left me-1"></i> Monaco Hub
+          </a>
+          <a href="../../index.html" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-house me-1"></i> Docs
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container pb-5" style="max-width: 1040px;">
+
+    <!-- Story Card -->
+    <section class="card shadow-sm border-0 p-4 mb-4">
+      <div class="d-flex align-items-start gap-3">
+        <div class="p-3 rounded-circle bg-primary bg-opacity-10 text-primary">
+          <i class="bi bi-columns fs-3"></i>
+        </div>
+        <div>
+          <h2 class="h5 fw-bold text-dark mb-2">The Story: Focused 50/50 Comparison</h2>
+          <p class="text-secondary mb-2">
+            While 3-column workspaces are perfect for exploring variable templates, the <strong>Split (Dual-Pane)</strong> workspace is engineered for rapid input/output verification.
+          </p>
+          <p class="text-secondary mb-3">
+            With the template fixed or loaded via predefined transforms, developers focus purely on how data variations in the <strong>Left Editor (Source)</strong> map directly into the <strong>Right Editor (Output)</strong>.
+          </p>
+          <div class="row g-2 text-center small fw-semibold">
+            <div class="col-md-6">
+              <div class="p-2 bg-light rounded border text-primary">
+                <i class="bi bi-filetype-json me-1"></i> Left: Source Collection (Input)
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-2 bg-light rounded border text-success">
+                <i class="bi bi-check2-circle me-1"></i> Right: Transformed Elements (Output)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subfolders Grid -->
+    <section class="mb-5">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h2 class="h5 fw-bold text-dark mb-0">
+          <i class="bi bi-folder2-open text-primary me-2"></i> Subfolders &amp; Studio Versions
+        </h2>
+        <span class="text-muted small">2 versions available</span>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- v2 Split Studio -->
+        <div class="col-md-6">
+          <div class="folder-card active-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="badge bg-primary">Refined Blueprint</span>
+              <span class="text-primary fw-bold small">v2 Split</span>
+            </div>
+            <div class="d-flex align-items-baseline gap-2 mb-2">
+              <div class="version-badge-lg text-primary">v2</div>
+              <div class="fw-semibold text-dark">Component Architecture &amp; Topbar</div>
+            </div>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Refactored modular split workspace with independent left/right editor component controllers, improved CSS layout, and instant file loader triggers.
+            </p>
+            <a href="./v2/" class="btn btn-primary fw-bold w-100 py-2 shadow-sm">
+              Launch Split v2 <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- v1 Split Studio -->
+        <div class="col-md-6">
+          <div class="folder-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="badge bg-secondary">Initial Blueprint</span>
+              <span class="text-muted small">v1 Split</span>
+            </div>
+            <div class="d-flex align-items-baseline gap-2 mb-2">
+              <div class="version-badge-lg text-dark">v1</div>
+              <div class="fw-semibold text-secondary">Foundational Dual-Pane</div>
+            </div>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              The original 50/50 dual-pane Monaco blueprint establishing the two-pane input/output structure for one-dimensional transformations.
+            </p>
+            <a href="./v1/" class="btn btn-outline-secondary fw-bold w-100 py-2">
+              Launch Split v1 <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation Hub Card -->
+    <div class="card border-0 bg-white shadow-sm p-4 rounded-3 text-center">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 text-start">
+        <div>
+          <h3 class="h6 fw-bold mb-1">Explore Related Monaco Workspaces</h3>
+          <p class="small text-muted mb-0">Looking for 3-column template selection or real live DOM rendering?</p>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="../threeColumns/v3/" class="btn btn-sm btn-success fw-bold">3-Column Studio v3</a>
+          <a href="../render/v2/tab1/" class="btn btn-sm btn-info text-dark fw-bold">Two-Tab Render v2</a>
+          <a href="../index.html" class="btn btn-sm btn-outline-dark">Monaco Hub</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-top py-4 bg-white text-muted">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2" style="max-width: 1040px; font-size: 0.875rem;">
+      <div>
+        <strong>JSON Transformer Suite</strong> • Built by <a href="https://github.com/keshavsoft" target="_blank" class="text-decoration-none text-dark fw-semibold">KeshavSoft</a>
+      </div>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="./v2/" class="text-decoration-none text-primary fw-bold">v2 Studio</a>
+        <a href="./v1/" class="text-decoration-none text-secondary">v1 Studio</a>
+        <a href="../index.html" class="text-decoration-none text-muted">Monaco Hub</a>
+        <a href="../../index.html" class="text-decoration-none text-muted">Docs Portal</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

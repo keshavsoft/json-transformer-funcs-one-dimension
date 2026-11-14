@@ -2,18 +2,230 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <script>
-        if (!location.pathname.endsWith('/') && !location.pathname.split('/').pop().includes('.')) {
-            location.replace(location.pathname + '/' + location.search + location.hash);
-        } else {
-            location.replace('./tab1/');
-        }
-    </script>
-    <title>Monaco IDE Render V2</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Render V2 Architecture — Two-Tab Live Stage</title>
+  <script>
+    if (!location.pathname.endsWith('/') && !location.pathname.endsWith('.html')) {
+      location.replace(location.pathname + '/' + location.search + location.hash);
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-primary: #1d4ed8;
+      --brand-accent: #0284c7;
+      --brand-dark: #0f172a;
+      --bg-page: #f8fafc;
+      --card-border: #e2e8f0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: #334155;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #090d16 0%, #1e3a8a 50%, #0284c7 100%);
+      color: #ffffff;
+      padding: 56px 0 48px 0;
+      margin-bottom: 32px;
+    }
+
+    .tab-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      transition: all 0.22s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+    }
+
+    .tab-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
+      border-color: #38bdf8;
+    }
+
+    .tab-card.active-tab {
+      border: 2px solid #0284c7;
+      background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+    }
+
+    .role-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 
 <body>
+
+  <!-- Hero Header -->
+  <header class="hero-banner shadow-sm">
+    <div class="container" style="max-width: 1040px;">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+        <div>
+          <!-- Breadcrumb Pill -->
+          <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb mb-0 px-3 py-1 rounded-pill bg-white bg-opacity-10 text-white border border-white border-opacity-20 small">
+              <li class="breadcrumb-item"><a href="../../../index.html" class="text-white text-decoration-none">Docs</a></li>
+              <li class="breadcrumb-item"><a href="../../index.html" class="text-white text-decoration-none">Monaco</a></li>
+              <li class="breadcrumb-item"><a href="../index.html" class="text-white text-decoration-none">render</a></li>
+              <li class="breadcrumb-item active text-white fw-bold" aria-current="page">v2</li>
+            </ol>
+          </nav>
+          <h1 class="display-6 fw-bold mb-2">Render V2: Two-Tab Live Stage</h1>
+          <p class="lead mb-0 text-white text-opacity-75" style="max-width: 680px;">
+            The decoupled "Foundry &amp; Canvas" architecture: separating the heavy Monaco IDE studio from the lightweight presentation canvas via <code>BroadcastChannel</code>.
+          </p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="./tab1/" class="btn btn-info fw-bold px-3 py-2 shadow-sm text-dark">
+            <i class="bi bi-play-circle-fill me-1"></i> Launch Tab 1 (Studio)
+          </a>
+          <a href="./tab2/" target="_blank" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-window-stack me-1"></i> Open Tab 2 (Canvas)
+          </a>
+          <a href="../index.html" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-arrow-left me-1"></i> Render Hub
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container pb-5" style="max-width: 1040px;">
+
+    <!-- The Architecture Story -->
+    <section class="card shadow-sm border-0 p-4 mb-4">
+      <div class="d-flex align-items-start gap-3">
+        <div class="p-3 rounded-circle bg-info bg-opacity-10 text-info">
+          <i class="bi bi-broadcast fs-3"></i>
+        </div>
+        <div>
+          <h2 class="h5 fw-bold text-dark mb-2">The Story: The Foundry &amp; The Canvas</h2>
+          <p class="text-secondary mb-2">
+            Traditional web playgrounds suffer from style leakage and DOM conflicts: the code editor's styles interfere with the preview element styles, and heavy IDE bundles slow down DOM reactivity.
+          </p>
+          <p class="text-secondary mb-3">
+            <strong>Render V2 completely decouples them into two separate browser tabs:</strong>
+          </p>
+          <div class="p-3 bg-light rounded-3 border small mb-2">
+            <div class="row g-3">
+              <div class="col-md-6 border-end">
+                <div class="fw-bold text-dark mb-1"><i class="bi bi-cpu text-primary me-1"></i> Tab 1: The Foundry (Supplier)</div>
+                <p class="text-muted mb-0">Houses the 3-column Monaco workspace. Transform your data, inspect the JSON AST, and click <strong>[Render in Tab 2]</strong> to beam the spec across the browser's <code>BroadcastChannel</code>.</p>
+              </div>
+              <div class="col-md-6">
+                <div class="fw-bold text-dark mb-1"><i class="bi bi-display text-success me-1"></i> Tab 2: The Canvas (Consumer)</div>
+                <p class="text-muted mb-0">A pure, clean room with zero Monaco bloat. Listens silently, parses the incoming spec, and compiles live HTML directly into <code>&lt;body id="app"&gt;</code> using <code>jsonToDom</code>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subfolders Grid -->
+    <section class="mb-5">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h2 class="h5 fw-bold text-dark mb-0">
+          <i class="bi bi-folder2-open text-primary me-2"></i> Subfolders &amp; Endpoints
+        </h2>
+        <span class="text-muted small">2 decoupled folders</span>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Tab 1 Card -->
+        <div class="col-md-6">
+          <div class="tab-card active-tab p-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="role-badge bg-primary text-white">Tab 1 &bull; Supplier</span>
+              <span class="badge bg-success-subtle text-success border border-success-subtle">The Studio</span>
+            </div>
+            <div class="d-flex align-items-baseline gap-2 mb-2">
+              <div class="h3 fw-bold text-dark mb-0">/tab1/</div>
+              <div class="text-secondary small">3-Column Monaco IDE</div>
+            </div>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Source columns editor, live <code>spec-repo</code> template selector, output JSON editor, <strong>[Transform]</strong> hook, and the <strong>[Render in Tab 2]</strong> broadcast action button with live handshake badge.
+            </p>
+            <a href="./tab1/" class="btn btn-info fw-bold w-100 py-2 shadow-sm text-dark">
+              Open Tab 1 Studio <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tab 2 Card -->
+        <div class="col-md-6">
+          <div class="tab-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="role-badge bg-success text-white">Tab 2 &bull; Consumer</span>
+              <span class="badge bg-info-subtle text-info border border-info-subtle">The Stage</span>
+            </div>
+            <div class="d-flex align-items-baseline gap-2 mb-2">
+              <div class="h3 fw-bold text-dark mb-0">/tab2/</div>
+              <div class="text-secondary small">Pure Live HTML Canvas</div>
+            </div>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Isolated DOM canvas loaded with Bootstrap 5 and Tailwind. Listens silently for incoming specs, mounts live elements, and emits a <code>RENDER_ACK</code> handshake back to Tab 1.
+            </p>
+            <a href="./tab2/" target="_blank" class="btn btn-outline-success fw-bold w-100 py-2">
+              Open Tab 2 Canvas <i class="bi bi-box-arrow-up-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation Hub Card -->
+    <div class="card border-0 bg-white shadow-sm p-4 rounded-3 text-center">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 text-start">
+        <div>
+          <h3 class="h6 fw-bold mb-1">Return to Monaco Workspaces Hub</h3>
+          <p class="small text-muted mb-0">Explore the full catalog of interactive 1D collection transformation workspaces.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="../index.html" class="btn btn-sm btn-outline-secondary">Render Hub</a>
+          <a href="../../threeColumns/v3/" class="btn btn-sm btn-outline-success">3-Column Studio</a>
+          <a href="../../index.html" class="btn btn-sm btn-outline-dark">Monaco Hub</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-top py-4 bg-white text-muted">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2" style="max-width: 1040px; font-size: 0.875rem;">
+      <div>
+        <strong>JSON Transformer Suite</strong> • Built by <a href="https://github.com/keshavsoft" target="_blank" class="text-decoration-none text-dark fw-semibold">KeshavSoft</a>
+      </div>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="./tab1/" class="text-decoration-none text-info fw-bold">tab1 (Studio)</a>
+        <a href="./tab2/" class="text-decoration-none text-success">tab2 (Canvas)</a>
+        <a href="../index.html" class="text-decoration-none text-muted">Render Hub</a>
+        <a href="../../index.html" class="text-decoration-none text-muted">Monaco Hub</a>
+        <a href="../../../index.html" class="text-decoration-none text-muted">Docs Portal</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
 
 </html>

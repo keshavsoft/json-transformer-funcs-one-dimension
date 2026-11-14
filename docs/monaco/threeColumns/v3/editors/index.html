@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editors Component Architecture — Three-Columns v3</title>
+  <script>
+    if (!location.pathname.endsWith('/') && !location.pathname.endsWith('.html')) {
+      location.replace(location.pathname + '/' + location.search + location.hash);
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-primary: #1d4ed8;
+      --brand-accent: #0284c7;
+      --brand-dark: #0f172a;
+      --bg-page: #f8fafc;
+      --card-border: #e2e8f0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: #334155;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+      color: #ffffff;
+      padding: 48px 0 40px 0;
+      margin-bottom: 32px;
+    }
+
+    .comp-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      transition: all 0.2s ease-in-out;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .comp-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      border-color: #38bdf8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero-banner shadow-sm">
+    <div class="container" style="max-width: 1040px;">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+        <div>
+          <!-- Breadcrumb Pill -->
+          <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb mb-0 px-3 py-1 rounded-pill bg-white bg-opacity-10 text-white border border-white border-opacity-20 small">
+              <li class="breadcrumb-item"><a href="../../../../index.html" class="text-white text-decoration-none">Docs</a></li>
+              <li class="breadcrumb-item"><a href="../../../index.html" class="text-white text-decoration-none">Monaco</a></li>
+              <li class="breadcrumb-item"><a href="../../index.html" class="text-white text-decoration-none">threeColumns</a></li>
+              <li class="breadcrumb-item"><a href="../index.html" class="text-white text-decoration-none">v3</a></li>
+              <li class="breadcrumb-item active text-white fw-bold" aria-current="page">editors</li>
+            </ol>
+          </nav>
+          <h1 class="display-6 fw-bold mb-2">Three-Column v3: Editors Architecture</h1>
+          <p class="lead mb-0 text-white text-opacity-75" style="max-width: 680px;">
+            Decoupled component architecture: each column in the 3-pane workbench is encapsulated in its own self-contained module.
+          </p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="../index.html" class="btn btn-success fw-bold px-3 py-2 shadow-sm">
+            <i class="bi bi-play-circle-fill me-1"></i> Launch 3-Column Studio
+          </a>
+          <a href="../../index.html" class="btn btn-outline-light px-3 py-2">
+            <i class="bi bi-arrow-left me-1"></i> threeColumns Hub
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container pb-5" style="max-width: 1040px;">
+
+    <!-- Story Card -->
+    <section class="card shadow-sm border-0 p-4 mb-4">
+      <div class="d-flex align-items-start gap-3">
+        <div class="p-3 rounded-circle bg-success bg-opacity-10 text-success">
+          <i class="bi bi-boxes fs-3"></i>
+        </div>
+        <div>
+          <h2 class="h5 fw-bold text-dark mb-2">The Story: Modular Component Architecture</h2>
+          <p class="text-secondary mb-2">
+            Rather than one massive JavaScript file controlling all three Monaco editors, the <code>editors/</code> directory breaks the workbench down into isolated, single-responsibility components:
+          </p>
+          <ul class="text-secondary mb-0 small">
+            <li><strong>Zero Global Variable Leakage</strong>: All editor instances are passed via local <code>context</code> objects.</li>
+            <li><strong>Declarative Event Delegation</strong>: Actions and event handlers are wired using KeshavSoft's <code>bindings.json</code> pattern.</li>
+            <li><strong>Independent Configuration</strong>: Each pane declares its own theme, container ID, and URI model in <code>config.json</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subfolders Grid -->
+    <section class="mb-5">
+      <h2 class="h5 fw-bold text-dark mb-3">
+        <i class="bi bi-folder2-open text-primary me-2"></i> Editor Component Subfolders
+      </h2>
+
+      <div class="row g-4">
+
+        <!-- left/ -->
+        <div class="col-md-6 col-lg-3">
+          <div class="comp-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="badge bg-primary">Column 1</span>
+              <span class="text-muted small">Input Data</span>
+            </div>
+            <h3 class="h6 fw-bold text-dark mb-2"><i class="bi bi-folder text-warning me-1"></i> left/</h3>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Source JSON editor module. Houses <code>columns.json</code>, the file input picker handler, and Monaco model instantiation.
+            </p>
+            <span class="badge bg-light text-dark border">actions.js &bull; config.json</span>
+          </div>
+        </div>
+
+        <!-- middle/ -->
+        <div class="col-md-6 col-lg-3">
+          <div class="comp-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="badge bg-warning text-dark">Column 2</span>
+              <span class="text-muted small">Template</span>
+            </div>
+            <h3 class="h6 fw-bold text-dark mb-2"><i class="bi bi-folder text-warning me-1"></i> middle/</h3>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Template selector module. Connects dynamically to CDN <code>spec-repo</code> and populates the template dropdown.
+            </p>
+            <span class="badge bg-light text-dark border">actions.js &bull; spec-repo</span>
+          </div>
+        </div>
+
+        <!-- right/ -->
+        <div class="col-md-6 col-lg-3">
+          <div class="comp-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="badge bg-success">Column 3</span>
+              <span class="text-muted small">Output</span>
+            </div>
+            <h3 class="h6 fw-bold text-dark mb-2"><i class="bi bi-folder text-warning me-1"></i> right/</h3>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Output compilation module. Hooks the <strong>[Transform]</strong> action, executing 1D template transformation into output AST.
+            </p>
+            <span class="badge bg-light text-dark border">actions.js &bull; transform</span>
+          </div>
+        </div>
+
+        <!-- common/ -->
+        <div class="col-md-6 col-lg-3">
+          <div class="comp-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="badge bg-secondary">Shared</span>
+              <span class="text-muted small">Utilities</span>
+            </div>
+            <h3 class="h6 fw-bold text-dark mb-2"><i class="bi bi-folder text-warning me-1"></i> common/</h3>
+            <p class="small text-secondary mb-3 flex-grow-1">
+              Shared infrastructure: <code>monacoLoader.js</code> AMD loader promise and common CSS card styling.
+            </p>
+            <span class="badge bg-light text-dark border">monacoLoader.js &bull; css</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation Hub Card -->
+    <div class="card border-0 bg-white shadow-sm p-4 rounded-3 text-center">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 text-start">
+        <div>
+          <h3 class="h6 fw-bold mb-1">Launch the 3-Column Studio</h3>
+          <p class="small text-muted mb-0">Experience all three editor components running together in full-screen Monaco workspace.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="../index.html" class="btn btn-sm btn-success fw-bold">Open v3 Studio</a>
+          <a href="../../index.html" class="btn btn-sm btn-outline-dark">threeColumns Hub</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-top py-4 bg-white text-muted">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2" style="max-width: 1040px; font-size: 0.875rem;">
+      <div>
+        <strong>JSON Transformer Suite</strong> • Built by <a href="https://github.com/keshavsoft" target="_blank" class="text-decoration-none text-dark fw-semibold">KeshavSoft</a>
+      </div>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="../index.html" class="text-decoration-none text-success fw-bold">v3 Studio</a>
+        <a href="../../index.html" class="text-decoration-none text-muted">threeColumns</a>
+        <a href="../../../index.html" class="text-decoration-none text-muted">Monaco Hub</a>
+        <a href="../../../../index.html" class="text-decoration-none text-muted">Docs</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
