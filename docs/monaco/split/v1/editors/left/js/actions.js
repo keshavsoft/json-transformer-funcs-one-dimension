@@ -1,4 +1,5 @@
 import config from './config.json' with { type: 'json' };
+import columns from './columns.json' with { type: 'json' };
 
 let editorInstance = null;
 
@@ -7,9 +8,10 @@ export const actions = {
     const container = document.getElementById(config.containerId);
     if (!container) throw new Error(`Container #${config.containerId} not found.`);
 
-    const initialText = typeof config.initialValue === 'string'
-      ? config.initialValue
-      : JSON.stringify(config.initialValue, null, 2);
+    const initialData = columns ?? config.initialValue;
+    const initialText = typeof initialData === 'string'
+      ? initialData
+      : JSON.stringify(initialData, null, 2);
 
     const model = monaco.editor.createModel(
       initialText,

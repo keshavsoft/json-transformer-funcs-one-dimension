@@ -1,0 +1,21 @@
+{
+  "containerId": "monacoLeft",
+  "theme": "vs-dark",
+  "language": "json",
+  "automaticLayout": true,
+  "minimap": {
+    "enabled": false
+  },
+  "fontSize": 14,
+  "lineNumbers": "on",
+  "tabSize": 2,
+  "scrollBeyondLastLine": false,
+  "formatOnPaste": true,
+  "formatOnType": true,
+  "modelUri": "inmemory://keshavsoft/split/v2/left.json",
+  "initialValue": {
+    "title": "Monaco Split V2 — Source",
+    "role": "Source Input",
+    "message": "Load or paste your source JSON data here."
+  }
+}
