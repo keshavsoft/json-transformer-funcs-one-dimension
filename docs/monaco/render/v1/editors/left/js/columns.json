@@ -1,0 +1,14 @@
+[
+    {
+        "columnName": "itemName",
+        "width": "300px"
+    },
+    {
+        "columnName": "baseUnit",
+        "width": "200px"
+    },
+    {
+        "columnName": "batches",
+        "width": "100px"
+    }
+]

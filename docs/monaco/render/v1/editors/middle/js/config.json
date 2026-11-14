@@ -1,0 +1,21 @@
+{
+  "containerId": "monacoMiddle",
+  "theme": "vs-dark",
+  "language": "json",
+  "automaticLayout": true,
+  "minimap": {
+    "enabled": false
+  },
+  "fontSize": 14,
+  "lineNumbers": "on",
+  "tabSize": 2,
+  "scrollBeyondLastLine": false,
+  "formatOnPaste": true,
+  "formatOnType": true,
+  "modelUri": "inmemory://keshavsoft/three/middle.json",
+  "initialValue": {
+    "title": "Monaco Three Columns — Middle",
+    "role": "Transformation Spec",
+    "message": "Enter transformation rules or instructions here."
+  }
+}
