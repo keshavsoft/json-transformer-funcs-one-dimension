@@ -139,9 +139,29 @@
     <!-- Hub Cards Grid -->
     <div class="row g-4 mb-5">
 
-      <!-- Monaco Studio Card -->
-      <div class="col-md-6">
+      <!-- Three-Column Studio v3 Card -->
+      <div class="col-md-4">
         <div class="playground-card active-card p-4">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <span class="badge bg-success">Latest &bull; 3-Column</span>
+            <span class="text-success fw-bold small">v3 Studio</span>
+          </div>
+          <div class="d-flex align-items-baseline gap-2 mb-2">
+            <div class="version-badge-lg text-success">v3</div>
+            <div class="fw-semibold text-dark">Source ➔ Template ➔ Output</div>
+          </div>
+          <p class="small text-secondary mb-3 flex-grow-1">
+            Three side-by-side Monaco editors: Source column with file picker, Template column with live <code>spec-repo</code> dropdown, and Output column with instant <strong>Transform</strong> trigger.
+          </p>
+          <a href="./threeColumns/v3/" class="btn btn-success fw-bold w-100 py-2 shadow-sm">
+            Launch 3-Column Studio v3 <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Monaco Studio Card -->
+      <div class="col-md-4">
+        <div class="playground-card p-4">
           <div class="d-flex align-items-center justify-content-between mb-3">
             <span class="badge bg-primary">Modern Monaco Studio</span>
             <span class="text-primary fw-bold small">v1 Studio</span>
@@ -153,14 +173,14 @@
           <p class="small text-secondary mb-3 flex-grow-1">
             Complete Monaco editor paired with live DOM preview. Load column specs, apply 1D collection templates, and render live into targeted DOM elements using declarative bindings.
           </p>
-          <a href="./v1/" class="btn btn-primary fw-bold w-100 py-2 shadow-sm">
+          <a href="./v1/" class="btn btn-outline-primary fw-bold w-100 py-2 shadow-sm">
             Launch Monaco Studio v1 <i class="bi bi-arrow-right ms-1"></i>
           </a>
         </div>
       </div>
 
       <!-- Legacy Playgrounds Card -->
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="playground-card p-4">
           <div class="d-flex align-items-center justify-content-between mb-3">
             <span class="badge bg-secondary">Evolutionary Archive</span>
