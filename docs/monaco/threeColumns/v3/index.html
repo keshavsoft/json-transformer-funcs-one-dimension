@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Monaco Three Columns Blueprint — V1</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/editor/editor.main.min.css">
+</head>
+
+<body id="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">‹›</span> Monaco IDE <span class="crumb">/ one dimension / V2</span>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <!-- Left Editor Feature Component -->
+    <section id="paneLeft" class="pane">
+      <div class="pane-heading">
+        <div>
+          <span class="eyebrow">Source</span>
+        </div>
+        <div class="pane-actions">
+          <label class="file-label">
+            <input type="file" id="filePickerLeft" accept=".json">
+          </label>
+        </div>
+      </div>
+      <div id="monacoLeft" class="editor"></div>
+      <footer>
+        <span id="footerInfoLeft">File: columns.json</span>
+        <span>JSON</span>
+      </footer>
+    </section>
+
+    <!-- Middle Editor Feature Component -->
+    <section id="paneMiddle" class="pane">
+      <div class="pane-heading">
+        <div>
+          <span class="eyebrow">template</span>
+        </div>
+        <div class="pane-actions">
+          <select id="templateSelect" class="template-select">
+            <option value="">-- Select Template --</option>
+          </select>
+        </div>
+      </div>
+      <div id="monacoMiddle" class="editor"></div>
+      <footer>
+        <span id="footerInfoMiddle">Template: buildColGroup</span>
+        <span>JSON</span>
+      </footer>
+    </section>
+
+    <!-- Right Editor Feature Component -->
+    <section id="paneRight" class="pane">
+      <div class="pane-heading">
+        <div>
+          <span class="eyebrow">output</span>
+        </div>
+        <div class="pane-actions">
+          <label class="file-label">
+            <input type="file" id="filePickerRight" accept=".json">
+          </label>
+        </div>
+      </div>
+      <div id="monacoRight" class="editor"></div>
+      <footer>
+        <span id="footerInfoRight">File: output.json</span>
+        <span>JSON</span>
+      </footer>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+  <script type="module" src="https://keshavsoft.github.io/dom-primitive-bindings/dist/v8/min.js"></script>
+  <script type="module" src="https://keshavsoft.github.io/dom-primitive-engine/dist/v19/min.js"></script>
+
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>

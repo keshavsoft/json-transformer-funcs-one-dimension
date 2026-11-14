@@ -52,6 +52,21 @@
   cursor: pointer;
 }
 
+.template-select {
+  background: #1e293b;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+}
+
+.template-select:focus {
+  border-color: #38bdf8;
+}
+
 .editor {
   flex: 1;
   min-height: 0;

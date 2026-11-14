@@ -1,4 +1,5 @@
 import config from './config.json' with { type: 'json' };
+import { spec } from 'https://keshavsoft.github.io/spec-repo/dist/v6/min.js';
 
 let editorInstance = null;
 
@@ -7,9 +8,26 @@ export const actions = {
     const container = document.getElementById(config.containerId);
     if (!container) throw new Error(`Container #${config.containerId} not found.`);
 
-    const initialText = typeof config.initialValue === 'string'
-      ? config.initialValue
-      : JSON.stringify(config.initialValue, null, 2);
+    const select = document.getElementById('templateSelect');
+    if (select && spec) {
+      select.innerHTML = '<option value="">-- Select Template --</option>';
+      for (const key of Object.keys(spec)) {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = key;
+        select.appendChild(option);
+      }
+    }
+
+    const defaultKey = 'buildColGroup';
+    const initialData = (spec && spec[defaultKey]) ? spec[defaultKey] : config.initialValue;
+    if (select && spec && spec[defaultKey]) {
+      select.value = defaultKey;
+    }
+
+    const initialText = typeof initialData === 'string'
+      ? initialData
+      : JSON.stringify(initialData, null, 2);
 
     const model = monaco.editor.createModel(
       initialText,
@@ -22,22 +40,20 @@ export const actions = {
       model
     });
 
+    const footer = document.getElementById('footerInfoMiddle');
+    if (footer) footer.textContent = `Template: ${defaultKey}`;
+
     return editorInstance;
   },
 
-  loadFile: async (event) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
+  onTemplateChange: (event) => {
+    const key = event.target.value;
+    if (!key || !spec || !spec[key]) return;
 
-    try {
-      const text = await file.text();
-      if (editorInstance) {
-        editorInstance.setValue(text);
-        const footer = document.getElementById('footerInfoMiddle');
-        if (footer) footer.textContent = `File: ${file.name} (${file.size} bytes)`;
-      }
-    } catch (err) {
-      console.error('[Middle Editor] File load failed:', err);
+    if (editorInstance) {
+      editorInstance.setValue(JSON.stringify(spec[key], null, 2));
+      const footer = document.getElementById('footerInfoMiddle');
+      if (footer) footer.textContent = `Template: ${key}`;
     }
   }
 };

@@ -1,0 +1,7 @@
+[
+  {
+    "event": "change",
+    "selector": "#templateSelect",
+    "action": "onTemplateChange"
+  }
+]
