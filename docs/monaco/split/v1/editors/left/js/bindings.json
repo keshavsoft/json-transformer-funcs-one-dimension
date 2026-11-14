@@ -1,0 +1,7 @@
+[
+  {
+    "event": "change",
+    "selector": "#filePickerLeft",
+    "action": "loadFile"
+  }
+]

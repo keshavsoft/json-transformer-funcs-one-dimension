@@ -1,0 +1,7 @@
+.workspace {
+  height: calc(100% - 58px);
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
